@@ -15,4 +15,5 @@ jobs:
           make build
       - name: run gitleaks
         run: |
+          cd gitleaks        
           gitleaks detect -v --report-format json --redact --no-git --source ../file_with_secret.py --report-path ../report.json
