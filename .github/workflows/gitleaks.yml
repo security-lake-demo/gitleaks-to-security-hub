@@ -11,11 +11,22 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2\
+    
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2.0.0
+      with:
+        role-to-assume: arn:aws:iam::<YOUR-ACCOUNT>:role/GitHubAction-AssumeRoleWithAction
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
+        aws-region: ${{ env.AWS_REGION }}
+      # Hello from AWS: WhoAmI
+    - name: Sts GetCallerIdentity
+      run: |
+        aws sts get-caller-identity
 
     - name: Install Gitleaks
       run: |
-        wget https://github.com/zricethezav/gitleaks/releases/download/v7.3.0/gitleaks-linux-amd64
+        wget https://github.com/zricethezav/gitleaks/releases/download/v8.17.0/gitleaks-linux-amd64
         mv gitleaks-linux-amd64 gitleaks
         chmod +x gitleaks
 
