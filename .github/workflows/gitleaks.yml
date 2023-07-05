@@ -10,7 +10,9 @@ permissions:
 jobs:
   gitleaks_scan:
     runs-on: ubuntu-latest
-
+    env:
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}      
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
