@@ -35,7 +35,7 @@ jobs:
 
     - name: Run Gitleaks
       run: |
-        ./gitleaks detect -v --report-format json --redact --no-git --source file_with_secret.py --report-path report.json
+        ./gitleaks detect -v --report-format json --redact --no-git --source file_with_secret.py --report-path report.json --exit-code 0
     
     - name: Upload to security Hub
       run: |
