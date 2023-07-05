@@ -30,7 +30,7 @@ jobs:
     - name: Install Gitleaks
       run: |
         wget https://github.com/gitleaks/gitleaks/releases/download/v8.17.0/gitleaks_8.17.0_linux_x64.tar.gz
-        mv gitleaks-linux-amd64 gitleaks
+        tar -xzvf gitleaks_8.17.0_linux_x64.tar.gz
         chmod +x gitleaks
 
     - name: Run Gitleaks
