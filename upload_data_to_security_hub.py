@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-
+import os
 import boto3
 
 # AWS Credentials
