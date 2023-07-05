@@ -39,4 +39,5 @@ jobs:
     
     - name: Upload to security Hub
       run: |
+        pip install boto3==1.27.0
         python ./upload_data_to_security_hub.py
