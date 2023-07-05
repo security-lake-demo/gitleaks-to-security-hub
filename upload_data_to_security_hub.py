@@ -47,7 +47,7 @@ def transform_gitleaks_output_to_security_hub(data):
     for record in data:
         output.append({
             'SchemaVersion': '2018-10-08',
-            'Id': record['RuleID'],
+            'Id': record['RuleID'] + "-" + record['File'],
             'ProductArn': f'arn:aws:securityhub:{region_name}:{account_id}:product/{account_id}/default',
             'Types': [record['RuleID']],
             'GeneratorId': 'gitleaks',
