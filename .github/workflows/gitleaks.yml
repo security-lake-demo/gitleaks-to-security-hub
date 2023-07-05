@@ -1,20 +1,24 @@
-name: gitleaks
-on: [pull_request, push, workflow_dispatch]
+name: Gitleaks Scan
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  scan:
-    name: gitleaks
+  gitleaks_scan:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: install gitlkeas
-        run: |
-          git clone https://github.com/gitleaks/gitleaks.git
-          cd gitleaks
-          make build
-          gitleaks detect -v --report-format json --redact --no-git --source ../file_with_secret.py --report-path ../report.json
-#       - name: run gitleaks
-#         run: |
-#           cd gitleaks        
-#           gitleaks detect -v --report-format json --redact --no-git --source ../file_with_secret.py --report-path ../report.json
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Gitleaks
+      run: |
+        wget https://github.com/zricethezav/gitleaks/releases/download/v7.3.0/gitleaks-linux-amd64
+        mv gitleaks-linux-amd64 gitleaks
+        chmod +x gitleaks
+
+    - name: Run Gitleaks
+      run: |
+        ./gitleaks detect -v --report-format json --redact --no-git --source file_with_secret.py --report-path report.json
