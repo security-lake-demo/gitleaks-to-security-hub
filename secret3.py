@@ -1,1 +1,1 @@
-aws_secret4 = "AKIAIMNOJVGFDXXddOA"
+aws_secret = "AKIAIMNOJVGFDXXddOA"
