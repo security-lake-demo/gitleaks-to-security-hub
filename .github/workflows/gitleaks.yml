@@ -18,7 +18,7 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::<YOUR-ACCOUNT>:role/GitHubAction-AssumeRoleWithAction
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
-        aws-region: ${{ env.AWS_REGION }}
+        aws-region: us-east-1
       # Hello from AWS: WhoAmI
       
     - name: Sts GetCallerIdentity
