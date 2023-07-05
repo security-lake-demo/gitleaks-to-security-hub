@@ -39,5 +39,5 @@ jobs:
     
     - name: Upload to security Hub
       run: |
-        pip install boto3==1.27.0 pydantic-==2.0.1
+        pip install boto3==1.27.0 pydantic==2.0.1
         python ./upload_data_to_security_hub.py
